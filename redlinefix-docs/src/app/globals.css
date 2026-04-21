@@ -1,0 +1,439 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Dark — بنفسجي للتدرجات والحدود، أبيض للنص المميز (بدل الأزرق) */
+:root {
+  --background: 270 30% 8%;
+  --foreground: 270 10% 92%;
+  --card: 270 30% 10%;
+  --card-foreground: 270 10% 92%;
+  --popover: 270 30% 10%;
+  --popover-foreground: 270 10% 92%;
+  --primary: 270 70% 60%;
+  --primary-foreground: 270 30% 8%;
+  --secondary: 270 20% 15%;
+  --secondary-foreground: 270 10% 90%;
+  --muted: 270 15% 18%;
+  --muted-foreground: 270 10% 50%;
+  --accent: 280 60% 55%;
+  --accent-foreground: 270 10% 90%;
+  --destructive: 270 15% 45%;
+  --destructive-foreground: 270 10% 96%;
+  --border: 270 20% 18%;
+  --input: 270 20% 18%;
+  --ring: 270 70% 65%;
+  --radius: 0.5rem;
+
+  --bg-main: #0f0a15;
+  --bg-secondary: #1a1225;
+  --bg-tertiary: #251a35;
+  --text-primary: #e8e4f0;
+  --text-secondary: #b8a8d0;
+  --text-muted: #7a6a95;
+  --border-color: #3d2a5a;
+  --sidebar-bg: #0f0a15;
+  --header-bg: #0f0a15;
+  --accent-color: #9333ea;
+  --accent-light: #a855f7;
+  --accent-dark: #7e22ce;
+  --accent-text: #ffffff;
+}
+
+[data-theme="light"] {
+  --background: 270 30% 98%;
+  --foreground: 270 30% 10%;
+  --card: 0 0% 100%;
+  --card-foreground: 270 30% 10%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 270 30% 10%;
+  --primary: 270 70% 50%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 270 20% 95%;
+  --secondary-foreground: 270 30% 10%;
+  --muted: 270 15% 92%;
+  --muted-foreground: 270 20% 40%;
+  --accent: 280 60% 50%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 270 12% 45%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 270 20% 88%;
+  --input: 270 20% 88%;
+  --ring: 270 70% 50%;
+
+  --bg-main: #faf8fc;
+  --bg-secondary: #f3eef8;
+  --bg-tertiary: #ebe4f2;
+  --text-primary: #1a0f25;
+  --text-secondary: #4a3a60;
+  --text-muted: #8878a0;
+  --border-color: #d8cce8;
+  --sidebar-bg: #f8f5fc;
+  --header-bg: #ffffff;
+  --accent-color: #9333ea;
+  --accent-light: #a855f7;
+  --accent-dark: #7e22ce;
+  --accent-text: #6d28d9;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background: var(--bg-main);
+  color: var(--text-primary);
+  direction: rtl;
+}
+
+code, pre, .font-mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  direction: ltr;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-dark);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-color);
+}
+
+/* Link styles — نص عادي، التمييز عند التحويم */
+a {
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent-text);
+  text-decoration: underline;
+}
+
+/* Code block styles */
+.code-block {
+  background: var(--bg-tertiary);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 14px;
+  direction: ltr;
+  display: inline-block;
+}
+
+/* Blockquote styles */
+blockquote {
+  border-right: 3px solid var(--accent-color);
+  padding-right: 16px;
+  margin-right: 0;
+  color: var(--text-secondary);
+}
+
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: transparent;
+}
+
+th, td {
+  padding: 12px 16px;
+  text-align: right;
+  border-bottom: 1px solid var(--border-color);
+}
+
+th {
+  background: var(--bg-tertiary);
+  font-weight: 500;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* Selection */
+::selection {
+  background: rgba(147, 51, 234, 0.35);
+}
+
+/* Mobile Menu Animation */
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.3s ease-out forwards;
+}
+
+/* Mobile Responsive Improvements */
+@media (max-width: 1024px) {
+  .hide-sidebar {
+    display: none;
+  }
+}
+
+/* Touch-friendly tap targets */
+@media (max-width: 640px) {
+  button, a {
+    min-height: 44px;
+  }
+}
+
+/* Theme-aware components */
+.sidebar-bg {
+  background: var(--sidebar-bg);
+}
+
+.header-bg {
+  background: var(--header-bg);
+}
+
+.card-bg {
+  background: var(--bg-secondary);
+}
+
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.border-theme {
+  border-color: var(--border-color);
+}
+
+/* Purple accent classes */
+.accent-gradient {
+  background: linear-gradient(135deg, var(--accent-color), var(--accent-dark));
+}
+
+.accent-text {
+  color: var(--accent-text);
+}
+
+/* Read page indicator */
+.page-read {
+  position: relative;
+}
+
+.page-read::after {
+  content: "✓";
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--accent-text);
+  font-size: 12px;
+}
+
+/* ===== ANIMATIONS ===== */
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade in from right (for RTL) */
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Scale in animation */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Slide up animation */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Glow pulse animation */
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(147, 51, 234, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(147, 51, 234, 0.55);
+  }
+}
+
+/* Float animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Animation classes */
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-fadeInRight {
+  animation: fadeInRight 0.5s ease-out forwards;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.4s ease-out forwards;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.5s ease-out forwards;
+}
+
+.animate-glowPulse {
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Staggered animations */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+
+/* Page transition */
+.page-transition {
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(147, 51, 234, 0.15);
+  border-color: var(--accent-light) !important;
+}
+
+/* Button hover effect */
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-glow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-glow:hover::before {
+  left: 100%;
+}
+
+/* Link hover underline effect */
+.link-underline {
+  position: relative;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  right: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-color), var(--accent-light));
+  transition: width 0.3s ease;
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* Sidebar item hover */
+.sidebar-item {
+  transition: all 0.2s ease;
+}
+
+.sidebar-item:hover {
+  background: var(--bg-tertiary);
+  transform: translateX(-4px);
+}
+
+/* Hero text animation */
+.hero-text {
+  animation: fadeIn 0.8s ease-out;
+}
+
+.hero-text-delay {
+  animation: fadeIn 0.8s ease-out 0.3s forwards;
+  opacity: 0;
+}
+
+/* Icon bounce on hover */
+.icon-bounce:hover {
+  animation: float 0.5s ease-in-out;
+}
+
+html {
+  scroll-behavior: auto;
+}
+

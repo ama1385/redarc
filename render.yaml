@@ -1,0 +1,15 @@
+# Render Blueprint: https://render.com/docs/blueprint-spec
+# Repo root should be New-Project (contains redlinefix-docs/).
+services:
+  - type: web
+    name: redlinefix-docs
+    runtime: node
+    rootDir: redlinefix-docs
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: "20.18.1"
+      - key: NEXT_TELEMETRY_DISABLED
+        value: "1"

@@ -1,0 +1,25 @@
+# Dependencies & build
+**/node_modules/
+**/.next/
+**/out/
+**/dist/
+**/.turbo/
+
+# Env & secrets
+.env
+.env.*
+!.env.example
+
+# Logs & debug
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# User uploads (large / private)
+uploads/
+
+# TypeScript
+*.tsbuildinfo
