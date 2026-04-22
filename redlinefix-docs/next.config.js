@@ -1,8 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export', // ✅ هذا المهم
+
   allowedDevOrigins: ["*.preview.same-app.com"],
+
   images: {
-    unoptimized: false,
+    unoptimized: true, // ⚠️ مهم مع static
     domains: [
       "source.unsplash.com",
       "images.unsplash.com",
